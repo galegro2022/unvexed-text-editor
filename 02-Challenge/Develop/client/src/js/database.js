@@ -31,13 +31,17 @@ export const putDb = async (content) => {
 
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
-const JateDb = await openDB('jate', 1);
-const tx = JateDb.transaction('jate', 'readonly');
-const store = tx.objectStore('jate');
-const request = store.getAll();
-const result = await request;
-console.log('result.value', result);
-return result;
+  console.log('GET from the database');
+  const jateDb = await openDB('jate', 1);
+  const tx = jateDb.transaction('jate', 'readonly');
+  const store = tx.objectStore('jate');
+  const request = store.get(1);
+  const result = await request;
+  result
+    ? console.log('🚀 - data retrieved from the database', result.value)
+    : console.log('🚀 - data not found in the database');
+    // Check if a variable is defined and if it is, return it.
+  return result?.value;
 };
 
 initdb();
