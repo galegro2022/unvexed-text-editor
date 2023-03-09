@@ -46,10 +46,6 @@ module.exports = () => {
       }),
     ],
 
-  };
-}
-  
-
     module: {
       rules: [
         {
@@ -59,7 +55,7 @@ module.exports = () => {
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
-          use:{
+          use: {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
@@ -72,3 +68,5 @@ module.exports = () => {
         },
       ],
     },
+  };
+};
